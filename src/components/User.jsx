@@ -26,6 +26,7 @@ const User = () => {
       <h3>{pueblo.name}</h3>
       <p>{pueblo.team_bonus}</p>
     </div>
+
   )
 }
 

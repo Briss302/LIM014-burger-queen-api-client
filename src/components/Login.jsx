@@ -1,11 +1,11 @@
 import React, {Fragment, useState} from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getToken } from "../services/auth";
 
 
 export const Login = () => {
   // Redireccionar
-  //let history = useHistory();
+  let history = useHistory();
 
   // formLogin: nombre del estado
   // setFormLogin: es un método que nos sirve para cambiar el
@@ -27,14 +27,26 @@ export const Login = () => {
       [event.target.name]: event.target.value,
     });
   };
-
+  console.log(formLogin)
   // onSubmit hace referencia a handleSubmit
   // onSubmit va enviar los valores del input
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //console.log(formLogin);
-    getToken(formLogin);
+    try{
+      const result = await getToken(formLogin);
+      changePage(result)
+    }
+    catch(err) {
+      console.log(err)
+    }
   };
+
+  // changePage, en esta función se va redireccionar de página
+  // de acuerdo al role del usuario logeado
+  const changePage = (response) => {
+    //console.log(response);
+    response.roles.admin ? history.push("/admin") : history.push("/pedidos/hacer-pedidos");
+  }
 
   return (
     <Fragment>
@@ -48,6 +60,7 @@ export const Login = () => {
             id="inputEmail"
             placeholder="Email"
             onChange={handleInputChange}
+            required
           />
         </div>
         <div className="form-group mt-1">
@@ -59,6 +72,7 @@ export const Login = () => {
             id="inputPassword"
             placeholder="Password"
             onChange={handleInputChange}
+            required
           />
         </div>
         <button type="submit" className="btn btn-primary mt-2">
