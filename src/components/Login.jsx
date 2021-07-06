@@ -19,6 +19,7 @@ export const Login = () => {
   // onChange hace referencia a handleInputChange
   // onChange va estar al pendiente de los valores que ingresan al input
   const handleInputChange = async (event) => {
+    console.log(event)
     // Concatenar la data ingresada
     setFormLogin({
       ...formLogin,
@@ -52,7 +53,7 @@ export const Login = () => {
     <Fragment>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="inputEmail">Email</label>
+          <label htmlFor="inputEmail">Email</label>
           <input
             name="email"
             type="text"
@@ -64,7 +65,7 @@ export const Login = () => {
           />
         </div>
         <div className="form-group mt-1">
-          <label for="inputPassword">Password</label>
+          <label htmlFor="inputPassword">Password</label>
           <input
             name="password"
             type="password"
