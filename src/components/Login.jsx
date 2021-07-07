@@ -45,8 +45,8 @@ export const Login = () => {
   // changePage, en esta función se va redireccionar de página
   // de acuerdo al role del usuario logeado
   const changePage = (response) => {
-    //console.log(response);
-    response.roles.admin ? history.push("/admin") : history.push("/pedidos/hacer-pedidos");
+    //TODO falta agregar la ruta de la vista si no es admin
+    response.roles.admin ? history.push("/admin") : history.push("/");
   }
 
   return (

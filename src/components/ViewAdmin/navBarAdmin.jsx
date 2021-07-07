@@ -1,22 +1,16 @@
-import React, { Fragment } from "react";
-import {
-  BrowserRouter as Router,
-  NavLink,
-  Switch,
-  Route
-} from "react-router-dom";
+import React from "react";
+import { NavLink, Switch, Route } from "react-router-dom";
+import { UserAdmin } from "./UserAdmin";
+import { ProductAdmin } from "./ProductAdmin";
 
-
-export const navBarAdmin = () => {
-  
-  
+export const NavBarAdmin = () => {
   return (
     <>
       <nav className="container mt-5">
         <div className="btn-group">
           <NavLink
             exact
-            to="/usuarios"
+            to="admin/usuarios"
             className="btn btn-dark"
             activeClassName="active"
           >
@@ -24,7 +18,7 @@ export const navBarAdmin = () => {
           </NavLink>
           <NavLink
             exact
-            to="/productos"
+            to="admin/productos"
             className="btn btn-dark"
             activeClassName="active"
           >
@@ -44,6 +38,14 @@ export const navBarAdmin = () => {
         </div>
       </nav>
       <hr />
+      <Switch>
+        <Route exact path="admin/usuarios">
+          <UserAdmin />
+        </Route>
+        <Route exact path="admin/productos">
+          <ProductAdmin />
+        </Route>
+      </Switch>
     </>
   );
-}
+};
