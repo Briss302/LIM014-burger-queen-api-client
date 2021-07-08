@@ -13,7 +13,7 @@ const User = () => {
           `https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations/${id}`
         );
         const users = await data.json();
-        console.log(users);
+        //console.log(users);
         setPueblo(users);
       };
     // console.log("useEffect");

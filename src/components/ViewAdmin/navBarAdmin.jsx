@@ -1,51 +1,38 @@
 import React from "react";
-import { NavLink, Switch, Route } from "react-router-dom";
-import { UserAdmin } from "./UserAdmin";
-import { ProductAdmin } from "./ProductAdmin";
+import { Link } from "react-router-dom";
 
 export const NavBarAdmin = () => {
   return (
     <>
       <nav className="container mt-5">
         <div className="btn-group">
-          <NavLink
-            exact
-            to="admin/usuarios"
+          <Link
+            to="/admin/usuarios"
             className="btn btn-dark"
-            activeClassName="active"
+            activeclassname="active"
           >
             Trabajadores
-          </NavLink>
-          <NavLink
-            exact
-            to="admin/productos"
+          </Link>
+          <Link
+            to="/admin/productos"
             className="btn btn-dark"
-            activeClassName="active"
+            activeclassname="active"
           >
             Menú
-          </NavLink>
-          <NavLink
-            exact
+          </Link>
+          <Link
             to="/"
             className="btn btn-dark"
-            activeClassName="active"
+            activeclassname="active"
             onClick={() => {
               localStorage.removeItem("token");
             }}
           >
             Salir
-          </NavLink>
+          </Link>
         </div>
       </nav>
       <hr />
-      <Switch>
-        <Route exact path="admin/usuarios">
-          <UserAdmin />
-        </Route>
-        <Route exact path="admin/productos">
-          <ProductAdmin />
-        </Route>
-      </Switch>
     </>
   );
 };

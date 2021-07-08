@@ -19,7 +19,7 @@ export const Login = () => {
   // onChange hace referencia a handleInputChange
   // onChange va estar al pendiente de los valores que ingresan al input
   const handleInputChange = async (event) => {
-    console.log(event)
+    //console.log(event)
     // Concatenar la data ingresada
     setFormLogin({
       ...formLogin,
@@ -28,7 +28,7 @@ export const Login = () => {
       [event.target.name]: event.target.value,
     });
   };
-  console.log(formLogin)
+  //console.log(formLogin)
   // onSubmit hace referencia a handleSubmit
   // onSubmit va enviar los valores del input
   const handleSubmit = async (event) => {
@@ -46,7 +46,7 @@ export const Login = () => {
   // de acuerdo al role del usuario logeado
   const changePage = (response) => {
     //TODO falta agregar la ruta de la vista si no es admin
-    response.roles.admin ? history.push("/admin") : history.push("/");
+    response.roles.admin ? history.push("/admin/usuarios") : history.push("/");
   }
 
   return (
